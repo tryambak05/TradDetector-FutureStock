@@ -1,0 +1,40 @@
+{
+  "name": "trad",
+  "version": "1.0.0",
+  "description": "This is auto trad detector bot software",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.ts",
+    "start:nse": "nodemon nse.ts",
+    "build": "tsc",
+    "winsrv": "node traddetector.js",
+    "bat": "call ./dist/run_expiry_dump.bat",
+    "deploy": "tsc && pm2 restart TradDetector-FutureStock",
+    "restart": "pm2 restart TradDetector-FutureStock",
+    "stop": "pm2 stop TradDetector-FutureStock",
+    "git": "git init && git add . && git commit -m \"first commit\" && git branch -M main && git remote add origin git@github.com:tryambak05/TradDetector-FutureStock.git && git push -u origin main"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^22.15.14",
+    "@types/node-cron": "^3.0.11",
+    "@types/ws": "^8.5.12",
+    "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
+    "webpack": "^5.94.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "node-cron": "^3.0.3",
+    "node-localstorage": "^3.0.5",
+    "node-windows": "^1.0.0-beta.8",
+    "nodemon": "^3.1.10",
+    "puppeteer": "^24.19.0",
+    "totp-generator": "^1.0.0",
+    "ws": "^8.18.0"
+  }
+}

@@ -1,0 +1,2 @@
+2025-05-17 02:18:19 - Starting C:\Program Files\nodejs\node.exe  --harmony --max_old_space_size=4096 D:\TreadingView\Projects\TradDetector-FutureStock\node_modules\node-windows\lib\wrapper.js --file D:\TreadingView\Projects\TradDetector-FutureStock\dist\index.js --scriptoptions= --log "Trad Detector FutureStock wrapper" --grow 0.25 --wait 1 --maxrestarts 3 --abortonerror n --stopparentfirst undefined
+2025-05-17 02:18:19 - Started 52872

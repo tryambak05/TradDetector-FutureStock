@@ -1,0 +1,148 @@
+
+  //================================= CE / PE PETTERN SCAN ALL INDICES ============================================================
+  // NIFTY
+  if (!isRun) {
+    setTimeoutTime = setTimeoutTime == 0 ? 1000 : setTimeoutTime + 1000;
+    setTimeout(() => {
+      var tradBook = new TradBook();
+      tradBook.name = "NIFTY";
+      tradBook.symbol = "Nifty 50";
+      tradBook.token = "99926000";
+      tradBook.exch_seg = "NSE";
+      tradBook.strikeChangeRatio = 50;
+
+      NiftyWithOptionChainIndices(candleTimeFrame, tradBook).then(
+        (result: string) => {
+          if (result) {
+            tradLog("nifty50.txt", result);
+            console.log(result);
+            console.log("\x1b[34m");
+          }
+          console.log("\x1b[0m");
+        }
+      );
+    }, setTimeoutTime);
+  }
+
+  // NIFTY BANK
+  if (!isRun) {
+    setTimeoutTime = setTimeoutTime == 0 ? 1000 : setTimeoutTime + 1000;
+
+    setTimeout(() => {
+      var tradBook = new TradBook();
+      tradBook.name = "BANKNIFTY";
+      tradBook.symbol = "Nifty Bank";
+      tradBook.token = "99926009";
+      tradBook.exch_seg = "NSE";
+      tradBook.strikeChangeRatio = 100;
+
+      NiftyWithOptionChainIndices(candleTimeFrame, tradBook).then(
+        (result: string) => {
+          if (result) {
+            tradLog("nifty_bank.txt", result);
+            console.log(result);
+            console.log("\x1b[34m");
+          }
+
+          console.log("\x1b[0m");
+        }
+      );
+    }, setTimeoutTime);
+  }
+
+  // NIFTY FIN SERVICE
+  if (!isRun) {
+    setTimeoutTime = setTimeoutTime == 0 ? 1000 : setTimeoutTime + 1000;
+    setTimeout(() => {
+      var tradBook = new TradBook();
+      tradBook.name = "FINNIFTY";
+      tradBook.symbol = "Nifty Fin Service";
+      tradBook.token = "99926037";
+      tradBook.exch_seg = "NSE";
+      tradBook.strikeChangeRatio = 50;
+      NiftyWithOptionChainIndices(candleTimeFrame, tradBook).then(
+        (result: string) => {
+          if (result) {
+            tradLog("nifty_fin_services.txt", result);
+            console.log(result);
+            console.log("\x1b[34m");
+          }
+          console.log("\x1b[0m");
+        }
+      );
+    }, setTimeoutTime);
+  }
+
+  // NIFTY MID CP
+  if (!isRun) {
+    setTimeoutTime = setTimeoutTime == 0 ? 1000 : setTimeoutTime + 1000;
+    setTimeout(() => {
+      var tradBook = new TradBook();
+      tradBook.name = "MIDCPNIFTY";
+      tradBook.symbol = "NIFTY MID SELECT";
+      tradBook.token = "99926074";
+      tradBook.exch_seg = "NSE";
+      tradBook.strikeChangeRatio = 25;
+      NiftyWithOptionChainIndices(candleTimeFrame, tradBook).then(
+        (result: string) => {
+          if (result) {
+            tradLog("nifty_midcap_select.txt", result);
+            console.log(result);
+            console.log("\x1b[34m");
+          }
+          console.log("\x1b[0m");
+        }
+      );
+    }, setTimeoutTime);
+  }
+
+  // SENSEX
+  if (!isRun) {
+    setTimeoutTime = setTimeoutTime == 0 ? 1000 : setTimeoutTime + 1000;
+    setTimeout(() => {
+      var tradBook = new TradBook();
+      tradBook.name = "SENSEX";
+      tradBook.symbol = "SENSEX";
+      tradBook.token = "99919000";
+      tradBook.exch_seg = "BSE";
+      tradBook.strikeChangeRatio = 100;
+
+      NiftyWithOptionChainIndices(candleTimeFrame, tradBook).then(
+        (result: string) => {
+          if (result) {
+            tradLog("sensex.txt", result);
+            console.log(result);
+            console.log("\x1b[34m");
+          }
+          console.log("\x1b[0m");
+        }
+      );
+    }, setTimeoutTime);
+  }
+
+  // NIFTY FUT
+  if (!isRun) {
+    setTimeoutTime = setTimeoutTime == 0 ? 1000 : setTimeoutTime + 1000;
+
+    setTimeout(() => {
+      var tradBook = new TradBook();
+      tradBook.name = "NIFTY";
+      tradBook.symbol = "NIFTY28MAR24FUT";
+      tradBook.token = "36612";
+      tradBook.exch_seg = "NFO";
+      tradBook.strikeChangeRatio = 50;
+
+      NiftyWithOptionChainIndices(candleTimeFrame, tradBook).then(
+        (result: String) => {
+          if (getStrongWordCount(result) > 1) {
+            console.log("\x1b[34m");
+          } else {
+            console.log("\x1b[32m");
+          }
+          console.log(result);
+          console.log("\x1b[0m");
+        }
+      );
+    }, setTimeoutTime);
+  }
+}
