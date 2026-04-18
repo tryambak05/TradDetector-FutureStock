@@ -1,4 +1,5 @@
 import { StockData } from "./models/stock.model";
+import { StockItem } from "./types/stock-items.type";
 
 export interface StockDataWithChange extends StockData {
   volumeChangePct: number;

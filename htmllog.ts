@@ -1,10 +1,7 @@
 import fs from "fs/promises";
 import path from "path";
 import { StockWithScores } from "./stocktracker";
-
-type StockItem = {
-  [key: string]: string | number | boolean;
-};
+import { StockItem } from "./types/stock-items.type";
 
 // 🔧 Helper: Get today's date as DDMMYYYY
 function getCurrentDateString(): string {

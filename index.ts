@@ -22,6 +22,7 @@ import { MarketStock } from "./models/market-data.model";
 import { StockData } from "./models/stock.model";
 import { updateFixedStockLogHTML } from "./htmllog";
 import { logDataToDailyFile } from "./logger";
+import { getScoredStocks } from "./services/score.service";
 
 var cron = require("node-cron");
 // var EventLogger = require("node-windows").EventLogger;
@@ -146,7 +147,10 @@ async function runUnderlyingOI() {
   let latestStock: StockData[] = await scraper.fetchUnderlyingsOI();
 
   if (latestStock as StockData[]) {
-    if ((!AngleOne.localStorageGet("StockOIData") && timeCount == 0) || timeCount == 1) {
+    if (
+      (!AngleOne.localStorageGet("StockOIData") && timeCount == 0) ||
+      timeCount == 1
+    ) {
       AngleOne.localStorageClear("StockOIData");
 
       let latestStockJson = JSON.stringify(latestStock);
@@ -182,6 +186,7 @@ async function runUnderlyingOI() {
     }));
 
     const scoredStocks = stockTracker.calculateTopStocks(mappedData);
+
     console.table(scoredStocks); // top 20
 
     let stockItems = sorted
@@ -202,8 +207,14 @@ async function runUnderlyingOI() {
       }))
       .sort((a: any, b: any) => a.rankChangePct - b.rankChangePct);
 
+    const standardScoreStockItems = getScoredStocks(stockItems);
+
     if (stockItems.length > 0) {
-      await updateFixedStockLogHTML(stockItems, scoredStocks, outputDir);
+      await updateFixedStockLogHTML(
+        standardScoreStockItems,
+        scoredStocks,
+        outputDir
+      );
 
       try {
         logDataToDailyFile(stockItems);

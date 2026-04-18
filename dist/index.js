@@ -25,6 +25,7 @@ const gainersLosers_model_1 = require("./models/gainersLosers.model");
 const nse_1 = require("./nse");
 const htmllog_1 = require("./htmllog");
 const logger_1 = require("./logger");
+const score_service_1 = require("./services/score.service");
 var cron = require("node-cron");
 // var EventLogger = require("node-windows").EventLogger;
 // var log = new EventLogger("Trad Detector");
@@ -161,8 +162,9 @@ function runUnderlyingOI() {
                 });
             })
                 .sort((a, b) => a.rankChangePct - b.rankChangePct);
+            const standardScoreStockItems = (0, score_service_1.getScoredStocks)(stockItems);
             if (stockItems.length > 0) {
-                yield (0, htmllog_1.updateFixedStockLogHTML)(stockItems, scoredStocks, outputDir);
+                yield (0, htmllog_1.updateFixedStockLogHTML)(standardScoreStockItems, scoredStocks, outputDir);
                 try {
                     (0, logger_1.logDataToDailyFile)(stockItems);
                 }
